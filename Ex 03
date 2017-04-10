@@ -1,0 +1,134 @@
+#include <stdio.h>
+
+void OneSubjScore(int iScore[][5], int OneSubj, int TotalSubj);
+void ScoreInput(int iScore[][5], int OneSubj, int TotalSubj);
+void SubjTotalSum(int iScore[][5], int OneSubj, int TotalSubj);
+int OneSubjSum(int iScore[][5], int OneSubj, int TotalSubj);
+int TotalScoreSum(int iScore[][5], int OneSubj, int TotalSubj);
+int TotalSubjSum(int iScore[][5], int OneSubj, int TotalSubj);
+
+void main()
+{
+	int iScore[5][5];
+
+	printf("----- 성적 관리 프로그램 -----\r\n\n");
+	
+	for (int OneSubj = 0; OneSubj < 5; ++OneSubj)
+	{
+		for (int TotalSubj = 0; TotalSubj < 5; ++TotalSubj)
+			OneSubjScore(iScore, OneSubj, TotalSubj);
+	}
+}
+
+void OneSubjScore(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	switch (OneSubj)
+	{
+	case 0:
+		if (TotalSubj == 0)
+			printf("-- 철희의 점수 --\r\n");
+	
+		ScoreInput(iScore, OneSubj, TotalSubj);
+		break;
+	case 1:
+		if (TotalSubj == 0)
+			printf("-- 철수의 점수 --\r\n");
+
+		ScoreInput(iScore, OneSubj, TotalSubj);
+		break;
+	case 2:
+		if (TotalSubj == 0)
+			printf("-- 영희의 점수 --\r\n");
+
+		ScoreInput(iScore, OneSubj, TotalSubj);
+		break;
+	case 3:
+		if (TotalSubj == 0)
+			printf("-- 영수의 점수 --\r\n");
+
+		ScoreInput(iScore, OneSubj, TotalSubj);
+		break;
+	case 4:
+		SubjTotalSum(iScore, OneSubj, TotalSubj);
+		break;
+	default:
+		break;
+	}
+}
+
+void ScoreInput(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	switch (TotalSubj)
+	{
+	case 0:
+		printf("국어 : "), scanf_s("%i", &iScore[OneSubj][TotalSubj]);
+		break;
+	case 1:
+		printf("영어 : "), scanf_s("%i", &iScore[OneSubj][TotalSubj]);
+		break;
+	case 2:
+		printf("수학 : "), scanf_s("%i", &iScore[OneSubj][TotalSubj]);
+		break;
+	case 3:
+		printf("국사 : "), scanf_s("%i", &iScore[OneSubj][TotalSubj]);
+		break;
+	case 4:
+		printf("총점 : %i\r\n\n", TotalScoreSum(iScore, OneSubj, TotalSubj));
+		break;
+	default:
+		break;
+	}
+}
+
+void SubjTotalSum(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	switch (TotalSubj)
+	{
+	case 0:
+		printf("국어 총점 : %i\r\n\n", OneSubjSum(iScore, OneSubj, TotalSubj));
+		break;
+	case 1:
+		printf("영어 총점 : %i\r\n\n", OneSubjSum(iScore, OneSubj, TotalSubj));
+		break;
+	case 2:
+		printf("수학 총점 : %i\r\n\n", OneSubjSum(iScore, OneSubj, TotalSubj));
+		break;
+	case 3:
+		printf("국사 총점 : %i\r\n\n", OneSubjSum(iScore, OneSubj, TotalSubj));
+		break;
+	case 4:
+		printf("전체 총합점수 : %i\r\n\n", TotalSubjSum(iScore, OneSubj, TotalSubj));
+		break;
+	}
+}
+
+int OneSubjSum(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	int TotalScore = 0;
+
+	for (OneSubj = 0; OneSubj < 4; ++OneSubj)
+		TotalScore = TotalScore + iScore[OneSubj][TotalSubj];
+
+	return TotalScore;
+}
+
+int TotalScoreSum(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	int TotalScore = 0;
+	
+	for (TotalSubj = 0; TotalSubj < 4; ++TotalSubj)
+		TotalScore = TotalScore + iScore[OneSubj][TotalSubj];
+	
+	return TotalScore;
+}
+
+int TotalSubjSum(int iScore[][5], int OneSubj, int TotalSubj)
+{
+	int TotalScore = 0;
+
+	for (OneSubj = 0; OneSubj < 4; ++OneSubj)
+		for (TotalSubj = 0; TotalSubj < 4; ++TotalSubj)
+			TotalScore = TotalScore + iScore[OneSubj][TotalSubj];
+
+	return TotalScore;
+}
