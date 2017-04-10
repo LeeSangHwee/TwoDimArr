@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+void main()
+{
+	int arr[3][9];
+
+	for (int y = 0, One = 2; y < 3; ++y, ++One)
+	{
+		for (int x = 0, Two = 1; x < 9; ++x, ++Two)
+		{
+			arr[y][x] = One*Two;
+			printf("%i * %i = %i\r\n", One, Two, arr[y][x]);
+		}
+		printf("\r\n");
+	}
+}
